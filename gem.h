@@ -1,11 +1,11 @@
 #ifndef GEM_H
 #define GEM_H
 
-
 class gem
 {
 public:
-    gem();
+    gem(int Type);
+    int gemType;
 };
 
 #endif // GEM_H
