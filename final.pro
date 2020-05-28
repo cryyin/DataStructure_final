@@ -33,7 +33,8 @@ HEADERS += \
     mainwindow.h \
     player.h \
     preparewindow.h \
-    startwindow.h
+    startwindow.h \
+    values.h
 
 FORMS += \
     mainwindow.ui \

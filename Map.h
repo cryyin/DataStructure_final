@@ -6,10 +6,9 @@
 #include <time.h>
 #include <stdio.h>
 #include <iostream>
+#include "values.h"
 
-#define SIZE_OF_LINE 8
-#define SIZE_OF_VERTICAL 8
-#define NUM_OF_GEM 4
+
 
 class Map
 {
