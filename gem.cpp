@@ -1,6 +1,7 @@
 #include "gem.h"
 
-gem::gem()
+
+gem::gem(int type)
 {
 
 }

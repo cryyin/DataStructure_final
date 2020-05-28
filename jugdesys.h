@@ -9,7 +9,7 @@ public:
     int steps;
     int eliminateTimes;
 
-    int getScore();//
+    int getScore();//通过消除次数和剩余步数算分
     bool IsWin();
     jugdeSys();
 };
