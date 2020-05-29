@@ -1,4 +1,7 @@
 #include "mainwindow.h"
+#include "values.h"
+#include "Map.h"
+#include<math.h>
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -13,6 +16,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::initGame()
 {
+    Map map;
+    map.initMap();
     for(int i = 0; i < SIZE_OF_LINE * SIZE_OF_VERTICAL; i++)
        {
            imageButton[i] = new IconButton(this);
@@ -21,18 +26,18 @@ void MainWindow::initGame()
            imageButton[i]->xID = i % SIZE_OF_LINE;
            imageButton[i]->yID = i / SIZE_OF_LINE;
            imageButton[i]->show();
-           if (game->getGameMap()[i])
+           if (map.map[(int)floor(i/SIZE_OF_LINE)][i % SIZE_OF_LINE]==0||map.map[(int)floor(i/SIZE_OF_LINE)][i % SIZE_OF_LINE]==1||map.map[(int)floor(i/SIZE_OF_LINE)][i % SIZE_OF_LINE]==2||map.map[(int)floor(i/SIZE_OF_LINE)][i % SIZE_OF_LINE]==3)
            {
                // 有方块就设置图片
-               QPixmap iconPix;
+               //QPixmap iconPix;
                QString fileString;
-               fileString.sprintf(":/res/image/%d.png", game->getGameMap()[i]);
-               iconPix.load(fileString);
-               QIcon icon(iconPix);
-               imageButton[i]->setIcon(icon);
+               fileString.asprintf(":/res/image/%d.png", map.map[(int)floor(i/SIZE_OF_LINE)][i % SIZE_OF_LINE]);
+               //iconPix.load(fileString);
+               //QIcon icon(iconPix);
+               imageButton[i]->setIcon(QIcon(fileString));
                imageButton[i]->setIconSize(QSize(kIconSize, kIconSize));
                // 添加按下的信号槽
-               connect(imageButton[i], SIGNAL(pressed()), this, SLOT(onIconButtonPressed()));
+               //connect(imageButton[i], SIGNAL(pressed()), this, SLOT(onIconButtonPressed()));
            }
            else
                imageButton[i]->hide();

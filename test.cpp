@@ -3,7 +3,7 @@
 
 
 
-int main()
+/*int main()
 {
     std::cout<<"111111"<<std::endl;
     Map map;
@@ -15,4 +15,4 @@ int main()
         std::cout<<std::endl;
     }
 
-}
+}*/
