@@ -16,41 +16,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Map.cpp \
-    gem.cpp \
-    jugdesys.cpp \
+    CAppTool.cpp \
+    CGameDlg.cpp \
+    CGameLogic.cpp \
     main.cpp \
-    mainwindow.cpp \
-    player.cpp \
-    preparewindow.cpp \
-    startwindow.cpp \
-    test.cpp
+    CBejeweledDlg.cpp
 
 HEADERS += \
-    Map.h \
-    gem.h \
-    jugdesys.h \
-    mainwindow.h \
-    player.h \
-    preparewindow.h \
-    startwindow.h \
-    values.h
+    CBejeweledDlg.h \
+    CGameDlg.h \
+    Global.h
 
 FORMS += \
-    mainwindow.ui \
-    preparewindow.ui \
-    startwindow.ui
+    CBejeweledDlg.ui \
+    CGameDlg.ui
+
+TRANSLATIONS += \
+    Bejeweled_zh_CN.ts
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-DISTFILES += \
-    res/image/0.png \
-    res/image/1.png \
-    res/image/2.png \
-    res/image/3.png
-
-RESOURCES += \
-    res.qrc
