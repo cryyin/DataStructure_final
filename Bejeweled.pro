@@ -19,6 +19,7 @@ SOURCES += \
     CAppTool.cpp \
     CGameDlg.cpp \
     CGameLogic.cpp \
+    CRoleAttr.cpp \
     main.cpp \
     CBejeweledDlg.cpp
 

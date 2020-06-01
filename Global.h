@@ -10,32 +10,71 @@
 #include <QMouseEvent>
 #include <QTimer>
 
-#define CHESS_COUNT 6
-#define MAP_SIZE 12
-#define ICON_SIZE 40
-#define WIN_SIZE 640
+#define CHESS_COUNT 8 //棋子种类
+#define MAP_SIZE 12 //地图单行棋子数量
+#define ICON_SIZE 40    //图标大小
+#define WIN_SIZE 640    //棋盘大小
+#define MONSTER_COUNT 1 //怪物数量
+#define MONSTERMOVEMENT_COUNT 20 //怪物图片数量
 
 using namespace std;
 
 
+/**
+ * @brief The CRoleAttr class
+ *
+ * 角色类，用于储存各项数值
+ */
+class CRoleAttr{
+public:
+   CRoleAttr();
+   int health=100;//血量
+   int attack=0;//攻击
+   int armour=0;//护甲
+   int magic=0;//魔法值
+   int potion=0;//药水
+   int gold=0;//金锭
+};
 
+/**
+ * @brief The CGameLogic class
+ *
+ * 游戏逻辑类，用于处理生成棋盘，棋子消除，计算角色数值
+ */
 class CGameLogic{
 public:
    CGameLogic();
-   void disturb();
-   int getBoard(int x,int y);
-   void setBoard(int x,int y,int value);
+   void initBoard();//初始化棋盘
+   void disturbBoard(int x,int y,int value);//对指定点位进行不重复分配(半随机，判定重复)
+   void constructBoard();//填补棋盘空缺的棋子(全随机，不判定重复)
+   int getBoard(int x,int y);//返回指定坐标的图片值
+   void setBoard(int x,int y,int value);//设定指定坐标的图片值
+   bool checkAdjacent(int x1,int y1,int x2,int y2);//判断两点是否相邻
+   bool checkMove(int x1,int y1,int x2,int y2);//检测相邻的两点是否可以交换位置
+   bool checkBoard();//检测棋盘是否含有可清除棋子，如果有则填充为1
+   void clearBoard();//清除棋盘中可清除的棋子
+   void downBoard();//下落棋子
+   CRoleAttr role;//玩家角色
+   bool isDowning=false;//是否在下落
 
 private:
-   int board[MAP_SIZE][MAP_SIZE];
+   int board[MAP_SIZE][MAP_SIZE];//棋盘数组
+   int board_clear[MAP_SIZE][MAP_SIZE];//棋盘消除数组
 };
 
+/**
+ * @brief The CAppTool class
+ *
+ * 工具类，用于读取和写入文件
+ */
 class CAppTool{
 public:
    CAppTool();
-   void readFile();
-   QPixmap pictures[CHESS_COUNT+1];
+   void readFile();//读取图片
+   QPixmap pictures[CHESS_COUNT];//图片值存储
+   QPixmap monster[MONSTER_COUNT][MONSTERMOVEMENT_COUNT];//怪物值存储
 };
+
 
 
 #endif // GLOBAL_H
