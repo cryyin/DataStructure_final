@@ -1,5 +1,7 @@
 #include "Global.h"
-
+#include "audioclip.h"
+#include <QtCore/QCoreApplication>
+#include <QtMultimedia/QMediaPlayer>
 
 CGameLogic::CGameLogic(){
 }
@@ -381,9 +383,17 @@ bool CGameLogic::checkBoard(){
  */
 
 void CGameLogic::clearBoard(){
+    QMediaPlayer * player = new QMediaPlayer;
+
+
+    player->setMedia(QUrl::fromLocalFile("./res/audio/2.mp3"));
+    player->setVolume(50);
+
     for(int i=0;i<MAP_SIZE;i++){
         for(int k=0;k<MAP_SIZE;k++){
             if(board_clear[i][k] == 1){
+                //播放音频
+                player->play();
                 //根据要消除的图片序号增加指定的值
                 switch(board[i][k]){
                     case 0:
