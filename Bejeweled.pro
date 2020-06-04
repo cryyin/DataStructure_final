@@ -1,4 +1,5 @@
 QT       += core gui
+QT       += multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -20,13 +21,15 @@ SOURCES += \
     CGameDlg.cpp \
     CGameLogic.cpp \
     CRoleAttr.cpp \
+    audioclip.cpp \
     main.cpp \
     CBejeweledDlg.cpp
 
 HEADERS += \
     CBejeweledDlg.h \
     CGameDlg.h \
-    Global.h
+    Global.h \
+    audioclip.h
 
 FORMS += \
     CBejeweledDlg.ui \
