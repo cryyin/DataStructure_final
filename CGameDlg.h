@@ -19,18 +19,23 @@ public:
 
 private slots:
     void init();//初始化棋盘、游戏时间计时器、重绘计时器
-    void on_pushButton_clicked();//测试按钮，无实际用途
     void paintEvent(QPaintEvent *event);//界面绘制事件
     void mousePressEvent(QMouseEvent *event);//鼠标点击事件
     void countTime();//游戏时间计时方法
+    void countFlash();//动画计时方法
 
 private:
     Ui::CGameDlg *ui;
     CGameLogic logic;//游戏操作逻辑对象
     CAppTool tool;//读取文件对象
     int count_time=0;//游戏时间
+    int count_flash=0;//动画计数
     QTimer *timer_repaint;//重绘计时器，0.1秒一次
     QTimer *timer_time;//游戏时间计时器，1秒一次
+    QTimer *timer_flash;//动画计时器，0.25秒一次
+    int select_count=0;//选择的数量
+    QPoint p1 = {0,0};
+    QPoint p2 = {0,0};
 };
 
 #endif // CGAMEDLG_H
