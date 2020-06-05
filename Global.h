@@ -56,6 +56,8 @@ public:
    void downBoard();//下落棋子
    CRoleAttr role;//玩家角色
    bool isDowning=false;//是否在下落
+   void checkBoardStuck();//检测是否死局
+   void remindBoard();//提醒玩家
 
 private:
    int board[MAP_SIZE][MAP_SIZE];//棋盘数组
