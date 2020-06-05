@@ -67,11 +67,7 @@ public:
 private:
    int board[MAP_SIZE][MAP_SIZE];//棋盘数组
    int board_clear[MAP_SIZE][MAP_SIZE];//棋盘消除数组
-<<<<<<< HEAD
-
-=======
    int moveable_point[MAP_SIZE][MAP_SIZE];
->>>>>>> nyx
 };
 
 /**

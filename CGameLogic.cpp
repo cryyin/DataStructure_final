@@ -470,9 +470,7 @@ void CGameLogic::constructBoard(){
 }
 
 
-<<<<<<< HEAD
 
-=======
 /**
  * @brief CGameLogic::checkBoardStuck
  * @return true，棋盘没卡死；false，棋盘卡死
@@ -508,7 +506,6 @@ bool CGameLogic::checkBoardStuck(){
             }
         }
     }
->>>>>>> nyx
 
     return false;
 }
