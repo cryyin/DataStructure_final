@@ -77,6 +77,14 @@ public:
    QPixmap monster[MONSTER_COUNT][MONSTERMOVEMENT_COUNT];//怪物值存储
 };
 
+class RankInformation{
+public:
+    char strName[50];
+    int nTime;
+    int nGrade;
+    int nRank;
+};
+
 
 
 #endif // GLOBAL_H

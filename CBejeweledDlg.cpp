@@ -31,3 +31,10 @@ void CBejeweledDlg::paintEvent(QPaintEvent *event)
 }
 
 
+
+void CBejeweledDlg::on_pushButton_2_clicked()
+{
+    this->hide();
+    //显示游戏界面
+    rank_form->show();
+}
