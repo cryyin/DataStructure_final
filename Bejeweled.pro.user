@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 4.11.2, 2020-06-05T13:09:12. -->
+=======
+<!-- Written by QtCreator 4.11.2, 2020-06-05T12:54:42. -->
+>>>>>>> nyx
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>

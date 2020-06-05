@@ -13,7 +13,8 @@
 #include <QtCore/QCoreApplication>
 #include <QtMultimedia/QMediaPlayer>
 
-#define CHESS_COUNT 8 //棋子种类
+#define CHESS_COUNT 7 //棋子种类
+#define ICON_COUNT 2 //图标种类
 #define MAP_SIZE 12 //地图单行棋子数量
 #define ICON_SIZE 40    //图标大小
 #define WIN_SIZE 640    //棋盘大小
@@ -59,13 +60,18 @@ public:
    void downBoard();//下落棋子
    CRoleAttr role;//玩家角色
    bool isDowning=false;//是否在下落
-   void checkBoardStuck();//检测是否死局
-   void remindBoard();//提醒玩家
+   bool checkBoardStuck();//检测是否死局
+   void remindBoard();//更新可移动棋子的数组
+   void choseRemind(int temp_point[2][2]);//从可移动数组中选出一对棋子位置，填入传递数组中
 
 private:
    int board[MAP_SIZE][MAP_SIZE];//棋盘数组
    int board_clear[MAP_SIZE][MAP_SIZE];//棋盘消除数组
+<<<<<<< HEAD
 
+=======
+   int moveable_point[MAP_SIZE][MAP_SIZE];
+>>>>>>> nyx
 };
 
 /**
@@ -77,7 +83,8 @@ class CAppTool{
 public:
    CAppTool();
    void readFile();//读取图片
-   QPixmap pictures[CHESS_COUNT];//图片值存储
+   QPixmap pictures[CHESS_COUNT];//棋子值存储
+   QPixmap icon[ICON_COUNT];//图标值存储
    QPixmap monster[MONSTER_COUNT][MONSTERMOVEMENT_COUNT];//怪物值存储
 };
 

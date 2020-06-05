@@ -74,6 +74,9 @@ void CGameDlg::init(){
 
 void CGameDlg::countTime(){
     count_time++;
+    if(remind_count == 1){
+        remind_count = 0;
+    }
     ui->textEdit_2->setText(QString::number(count_time,10));
 }
 
@@ -93,6 +96,13 @@ void CGameDlg::countFlash(){
         //两个点是否相邻。如果相邻则进行转换判断
         if(logic.checkAdjacent(p1.x(),p1.y(),p2.x(),p2.y())){
             if(logic.checkMove(p1.x(),p1.y(),p2.x(),p2.y())){
+
+                //交换点位
+                int temp_point = logic.getBoard(p1.x(),p1.y());
+                logic.setBoard(p1.x(),p1.y(),logic.getBoard(p2.x(),p2.y()));
+                logic.setBoard(p2.x(),p2.y(),temp_point);
+
+                //清除棋盘
                 if(logic.checkBoard()){
                     logic.clearBoard();
                 }
@@ -189,13 +199,29 @@ void CGameDlg::paintEvent(QPaintEvent *event)
 
     //绘制选择红框
     if(select_count==1){
-        painter.drawPixmap(QRect(p1.x()*40,p1.y()*40,40,40), tool.pictures[7]);
+        painter.drawPixmap(QRect(p1.x()*40,p1.y()*40,40,40), tool.icon[0]);
     }else if(select_count==2){
-        painter.drawPixmap(QRect(p1.x()*40,p1.y()*40,40,40), tool.pictures[7]);
-        painter.drawPixmap(QRect(p2.x()*40,p2.y()*40,40,40), tool.pictures[7]);
+        painter.drawPixmap(QRect(p1.x()*40,p1.y()*40,40,40), tool.icon[0]);
+        painter.drawPixmap(QRect(p2.x()*40,p2.y()*40,40,40), tool.icon[0]);
+    }
+
+    //绘制提示绿框
+    if(remind_count == 1){
+        painter.drawPixmap(QRect(p1_remind.x()*40,p1_remind.y()*40,40,40), tool.icon[1]);
+        painter.drawPixmap(QRect(p2_remind.x()*40,p2_remind.y()*40,40,40), tool.icon[1]);
     }
 
     painter.drawPixmap(QRect(600,100,100,100), tool.monster[0][count_flash%20]);
 }
 
 
+
+void CGameDlg::on_pushButton_clicked()
+{
+    int temp_point[2][2] = {-1,-1,-1,-1};
+    logic.remindBoard();
+    logic.choseRemind(temp_point);
+    p1_remind = {temp_point[0][0],temp_point[0][1]};
+    p2_remind = {temp_point[1][0],temp_point[1][1]};
+    remind_count = 1;
+}
