@@ -24,6 +24,8 @@ private slots:
     void countTime();//游戏时间计时方法
     void countFlash();//动画计时方法
 
+    void on_pushButton_clicked();
+
 private:
     Ui::CGameDlg *ui;
     CGameLogic logic;//游戏操作逻辑对象
@@ -33,9 +35,14 @@ private:
     QTimer *timer_repaint;//重绘计时器，0.1秒一次
     QTimer *timer_time;//游戏时间计时器，1秒一次
     QTimer *timer_flash;//动画计时器，0.25秒一次
+
     int select_count=0;//选择的数量
     QPoint p1 = {0,0};
     QPoint p2 = {0,0};
+
+    int remind_count=0;//提示框架
+    QPoint p1_remind = {0,0};
+    QPoint p2_remind = {0,0};
 };
 
 #endif // CGAMEDLG_H

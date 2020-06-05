@@ -20,13 +20,14 @@ void CGameLogic::initBoard(){
         for(int k=0;k<MAP_SIZE;k++){
             board[i][k] = 6;
             board_clear[i][k] = 0;
+            moveable_point[i][k] = 0;
         }
     }
 
     //生成各个位置的图片值，保证不可消子
     for (int i=0;i<MAP_SIZE;i++){
         for(int k=0;k<MAP_SIZE;k++){
-            int temp_num = rand() % (CHESS_COUNT-2);
+            int temp_num = rand() % (CHESS_COUNT-1);
             disturbBoard(i,k,temp_num);
         }
     }
@@ -76,14 +77,14 @@ void CGameLogic::disturbBoard(int x,int y,int value){
     if(x1_num == x2_num){
         if(value == x1_num){
             if(y1_num == y2_num){
-                value = rand() % (CHESS_COUNT-2);
+                value = rand() % (CHESS_COUNT-1);
                 while(value==x1_num || value==y1_num){
-                    value = rand() % (CHESS_COUNT-2);
+                    value = rand() % (CHESS_COUNT-1);
                 }
             }else{
-                value = rand() % (CHESS_COUNT-2);
+                value = rand() % (CHESS_COUNT);
                 while(value==x1_num){
-                    value = rand() % (CHESS_COUNT-2);
+                    value = rand() % (CHESS_COUNT-1);
                 }
             }
         }
@@ -96,15 +97,15 @@ void CGameLogic::disturbBoard(int x,int y,int value){
             //上边也二连
             if(x1_num == x2_num){
                 //获取新的值，直到不与上左相同
-                value = rand() % (CHESS_COUNT-2);
+                value = rand() % (CHESS_COUNT-1);
                 while(value==x1_num || value==y1_num){
-                    value = rand() % (CHESS_COUNT-2);
+                    value = rand() % (CHESS_COUNT-1);
                 }
             }else{//上边不二连
                 //获取新的值，直到不与左相同
-                value = rand() % (CHESS_COUNT-2);
+                value = rand() % (CHESS_COUNT-1);
                 while(value==y1_num){
-                    value = rand() % (CHESS_COUNT-2);
+                    value = rand() % (CHESS_COUNT-1);
                 }
             }
         }
@@ -113,9 +114,9 @@ void CGameLogic::disturbBoard(int x,int y,int value){
 
     //对角线形成的三角形
     if(x1_num == center_num  && y1_num == center_num){
-        value = rand() % (CHESS_COUNT-2);
+        value = rand() % (CHESS_COUNT-1);
         while(value==center_num){
-            value = rand() % (CHESS_COUNT-2);
+            value = rand() % (CHESS_COUNT-1);
         }
     }
 
@@ -181,9 +182,6 @@ bool CGameLogic::checkMove(int x1,int y1,int x2,int y2){
 
     //对新棋盘进行消子检测，如果可以消除则可以交换，返回true
     if(temp.checkBoard()){
-        int temp_point = board[x1][y1];
-        board[x1][y1] = board[x2][y2];
-        board[x2][y2] = temp_point;
         return true;
     }else{//交换后不可以消子，返回false
         return false;
@@ -471,21 +469,153 @@ void CGameLogic::constructBoard(){
 }
 
 
- CGameLogic::checkBoardStuck(){
-    is
+/**
+ * @brief CGameLogic::checkBoardStuck
+ * @return true，棋盘没卡死；false，棋盘卡死
+ *
+ * 检测棋盘是否卡死
+ */
+
+bool CGameLogic::checkBoardStuck(){
+
+
+
     for(int i=0;i<MAP_SIZE;i++){
         for(int k=0;k<MAP_SIZE;k++){
             if((i-1)!=-1){
-                checkMove(i,k,i-1,k);
+                if(checkMove(i,k,i-1,k)){
+                   return true;
+                }
+            }
+            if((i+1)!=MAP_SIZE){
+                if(checkMove(i,k,i+1,k)){
+                   return true;
+                }
+            }
+            if((k-1)!=-1){
+                if(checkMove(i,k,i,k-1)){
+                   return true;
+                }
+            }
+            if((k+1)!=MAP_SIZE){
+                if(checkMove(i,k,i,k+1)){
+                   return true;
+                }
             }
         }
+    }
+
+    return false;
+}
+
+/**
+ * @brief CGameLogic::remindBoard
+ * @param moveable_point 可移动点位标记数组
+ *
+ * 计算出可以动的点位，将他们在数组中对应的位置填为1
+ */
+
+void CGameLogic::remindBoard(){
+
+
+    if(checkBoardStuck()){
+        for(int i=0;i<MAP_SIZE;i++){
+            for(int k=0;k<MAP_SIZE;k++){
+                if((i-1)!=-1){
+                    if(checkMove(i,k,i-1,k)){
+                        moveable_point[i][k] = 1;
+                        moveable_point[i-1][k] = 1;
+                    }
+                }
+                if((i+1)!=MAP_SIZE){
+                    if(checkMove(i,k,i+1,k)){
+                        moveable_point[i][k] = 1;
+                        moveable_point[i+1][k] = 1;
+                    }
+                }
+                if((k-1)!=-1){
+                    if(checkMove(i,k,i,k-1)){
+                        moveable_point[i][k] = 1;
+                        moveable_point[i][k-1] = 1;
+                    }
+                }
+                if((k+1)!=MAP_SIZE){
+                    if(checkMove(i,k,i,k+1)){
+                        moveable_point[i][k] = 1;
+                        moveable_point[i][k+1] = 1;
+                    }
+                }
+            }
+        }
+    }
+
+
+    for(int i=0;i<MAP_SIZE;i++){
+        for(int k=0;k<MAP_SIZE;k++){
+            cout<<moveable_point[i][k]<<" ";
+        }
+        cout<<"\n";
     }
 }
 
 
+/**
+ * @brief CGameLogic::choseRemind
+ * @param temp_point 传递数组
+ *
+ * 从可移动标记数组中随机选取一对点位
+ */
+void CGameLogic::choseRemind(int temp_point[2][2]){
+    srand((unsigned)time(0));
+    int x,y,while1_flag=1;
+    while(while1_flag){
+        x = rand() % (MAP_SIZE);
+        y = rand() % (MAP_SIZE);
+        if(moveable_point[x][y] == 1){
+            int while2_flag=1;
+            temp_point[0][0] = x;
+            temp_point[0][1] = y;
+            while(while2_flag){
+                int count;
+                count = rand() % 4;
+                switch(count){
+                    case 0:
+                        if(moveable_point[x-1][y]==1){
+                            while2_flag=0;
+                            temp_point[1][0] = x-1;
+                            temp_point[1][1] = y;
+                        }
+                        break;
+                    case 1:
+                        if(moveable_point[x+1][y]==1){
+                            while2_flag=0;
+                            temp_point[1][0] = x+1;
+                            temp_point[1][1] = y;
+                        }
+                        break;
+                    case 2:
+                        if(moveable_point[x][y-1]==1){
+                            while2_flag=0;
+                            temp_point[1][0] = x;
+                            temp_point[1][1] = y-1;
+                        }
+                        break;
+                    case 3:
+                        if(moveable_point[x][y+1]==1){
+                            while2_flag=0;
+                            temp_point[1][0] = x;
+                            temp_point[1][1] = y+1;
+                        }
+                        break;
+                }//switch
+            }//while2
 
-void CGameLogic::remindBoard(){
+           while1_flag = 0;
+        }
+    }//while1
 
+
+    cout<<temp_point[0][0]<<" "<<temp_point[0][1]<<" "<<temp_point[1][0]<<" "<<temp_point[1][1]<<"here\n";
 }
 
 
