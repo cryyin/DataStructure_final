@@ -471,6 +471,22 @@ void CGameLogic::constructBoard(){
 }
 
 
+ CGameLogic::checkBoardStuck(){
+    is
+    for(int i=0;i<MAP_SIZE;i++){
+        for(int k=0;k<MAP_SIZE;k++){
+            if((i-1)!=-1){
+                checkMove(i,k,i-1,k);
+            }
+        }
+    }
+}
+
+
+
+void CGameLogic::remindBoard(){
+
+}
 
 
 /**
