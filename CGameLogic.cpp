@@ -1,7 +1,8 @@
 #include "Global.h"
-#include "audioclip.h"
-#include <QtCore/QCoreApplication>
-#include <QtMultimedia/QMediaPlayer>
+
+
+
+
 
 CGameLogic::CGameLogic(){
 }
@@ -383,8 +384,8 @@ bool CGameLogic::checkBoard(){
  */
 
 void CGameLogic::clearBoard(){
-    QMediaPlayer * player = new QMediaPlayer;
 
+    QMediaPlayer * player = new QMediaPlayer;
 
     player->setMedia(QUrl::fromLocalFile("./res/audio/2.mp3"));
     player->setVolume(50);
@@ -471,16 +472,7 @@ void CGameLogic::constructBoard(){
 }
 
 
- CGameLogic::checkBoardStuck(){
-    //is
-    for(int i=0;i<MAP_SIZE;i++){
-        for(int k=0;k<MAP_SIZE;k++){
-            if((i-1)!=-1){
-                checkMove(i,k,i-1,k);
-            }
-        }
-    }
-}
+
 
 
 

@@ -9,6 +9,9 @@
 #include <QDialog>
 #include <QMouseEvent>
 #include <QTimer>
+#include "audioclip.h"
+#include <QtCore/QCoreApplication>
+#include <QtMultimedia/QMediaPlayer>
 
 #define CHESS_COUNT 8 //棋子种类
 #define MAP_SIZE 12 //地图单行棋子数量
@@ -62,6 +65,7 @@ public:
 private:
    int board[MAP_SIZE][MAP_SIZE];//棋盘数组
    int board_clear[MAP_SIZE][MAP_SIZE];//棋盘消除数组
+
 };
 
 /**

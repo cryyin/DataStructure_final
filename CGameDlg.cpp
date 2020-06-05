@@ -1,8 +1,6 @@
 #include "CGameDlg.h"
 #include "ui_CGameDlg.h"
-#include "audioclip.h"
-#include <QtCore/QCoreApplication>
-#include <QtMultimedia/QMediaPlayer>
+
 
 CGameDlg::CGameDlg(QWidget *parent) :
     QDialog(parent),
@@ -134,8 +132,8 @@ void CGameDlg::mousePressEvent(QMouseEvent *event)
         QPoint temp_p1 = event->globalPos();
         QPoint temp_p2 = pos();
         QPoint p = temp_p1-temp_p2;
-        AudioClip ac;
-        QMediaPlayer * player = new QMediaPlayer;
+        //AudioClip ac;
+
 
         //播放音频
         player->setMedia(QUrl::fromLocalFile("./res/audio/1.mp3"));

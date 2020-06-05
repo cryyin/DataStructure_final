@@ -14,15 +14,21 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QListView" name="listView">
+   <widget class="QTableView" name="tableView">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>80</x>
       <y>10</y>
-      <width>551</width>
-      <height>381</height>
+      <width>511</width>
+      <height>391</height>
      </rect>
     </property>
+    <property name="sortingEnabled">
+     <bool>false</bool>
+    </property>
+    <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+     <bool>false</bool>
+    </attribute>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
