@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 
+//调整堆
 void HeapAdjust (RankInformation RInfo[], int length, int k)
 {
     RankInformation tmp = RInfo[k];
@@ -19,7 +20,7 @@ void HeapAdjust (RankInformation RInfo[], int length, int k)
     RInfo[k] = tmp;
 }
 
-
+//堆排序
 void HeapSort (RankInformation RInfo[], int length)
 {
     if (RInfo == NULL || length <= 0)
