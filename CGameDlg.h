@@ -8,6 +8,7 @@
 #include <QtCore/QCoreApplication>
 #include <QtMultimedia/QMediaPlayer>
 
+
 namespace Ui {
 class CGameDlg;
 }
@@ -28,6 +29,8 @@ private slots:
     void countFlash();//动画计时方法
 
     void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::CGameDlg *ui;

@@ -225,3 +225,24 @@ void CGameDlg::on_pushButton_clicked()
     p2_remind = {temp_point[1][0],temp_point[1][1]};
     remind_count = 1;
 }
+
+void CGameDlg::on_pushButton_2_clicked()
+{
+    ofstream write;
+    ifstream read;
+    bool isOK;
+
+    QString temp= QInputDialog::getText(NULL, "Input Dialog",
+                                        "Please input your name",
+                                        QLineEdit::Normal,
+                                        "your name",
+                                        &isOK);
+    string name=temp.toStdString();
+    if(isOK){
+        write.open("result.txt", ios::app);				//用ios::app不会覆盖文件内容
+        write << name <<" "<<ui->textEdit_2->document()->toPlainText().toStdString()<<" "<<ui->lineEdit_6->text().toStdString()<< endl;
+        write.close();
+        read.close();
+    }
+
+}
