@@ -12,6 +12,12 @@
 #include "audioclip.h"
 #include <QtCore/QCoreApplication>
 #include <QtMultimedia/QMediaPlayer>
+#include<iostream>
+#include<fstream>
+#include <QInputDialog>
+#include <QDate>
+#include <QMessageBox>
+#include <sstream>
 
 #define CHESS_COUNT 7 //棋子种类
 #define ICON_COUNT 2 //图标种类
@@ -86,9 +92,9 @@ public:
 
 class RankInformation{
 public:
-    char strName[50];
+    QString strName;
     int nTime;
-    int nGrade;
+    int nScore;
     int nRank;
 };
 

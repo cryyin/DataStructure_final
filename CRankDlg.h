@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "qstandarditemmodel.h"
+#include "Global.h"
+
 
 namespace Ui {
 class CRankDlg;
@@ -22,6 +24,8 @@ private slots:
     void on_tableView_clicked(const QModelIndex &index);
 
     void on_tableView_activated(const QModelIndex &index);
+
+    void on_pushButton_clicked();
 
 private:
     Ui::CRankDlg *ui;
