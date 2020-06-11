@@ -4,6 +4,10 @@
 #include <QDialog>
 #include "qpainter.h"
 #include "Global.h"
+#include "audioclip.h"
+#include <QtCore/QCoreApplication>
+#include <QtMultimedia/QMediaPlayer>
+
 
 namespace Ui {
 class CGameDlg;
@@ -26,12 +30,15 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::CGameDlg *ui;
     CGameLogic logic;//游戏操作逻辑对象
     CAppTool tool;//读取文件对象
     int count_time=0;//游戏时间
     int count_flash=0;//动画计数
+    QMediaPlayer * player = new QMediaPlayer;//音乐播放器
     QTimer *timer_repaint;//重绘计时器，0.1秒一次
     QTimer *timer_time;//游戏时间计时器，1秒一次
     QTimer *timer_flash;//动画计时器，0.25秒一次

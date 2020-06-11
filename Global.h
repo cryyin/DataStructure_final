@@ -9,6 +9,15 @@
 #include <QDialog>
 #include <QMouseEvent>
 #include <QTimer>
+#include "audioclip.h"
+#include <QtCore/QCoreApplication>
+#include <QtMultimedia/QMediaPlayer>
+#include<iostream>
+#include<fstream>
+#include <QInputDialog>
+#include <QDate>
+#include <QMessageBox>
+#include <sstream>
 
 #define CHESS_COUNT 7 //棋子种类
 #define ICON_COUNT 2 //图标种类
@@ -79,6 +88,14 @@ public:
    QPixmap pictures[CHESS_COUNT];//棋子值存储
    QPixmap icon[ICON_COUNT];//图标值存储
    QPixmap monster[MONSTER_COUNT][MONSTERMOVEMENT_COUNT];//怪物值存储
+};
+
+class RankInformation{
+public:
+    QString strName;
+    int nTime;
+    int nScore;
+    int nRank;
 };
 
 

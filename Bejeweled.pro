@@ -20,6 +20,7 @@ SOURCES += \
     CAppTool.cpp \
     CGameDlg.cpp \
     CGameLogic.cpp \
+    CRankDlg.cpp \
     CRoleAttr.cpp \
     audioclip.cpp \
     main.cpp \
@@ -28,12 +29,14 @@ SOURCES += \
 HEADERS += \
     CBejeweledDlg.h \
     CGameDlg.h \
+    CRankDlg.h \
     Global.h \
     audioclip.h
 
 FORMS += \
     CBejeweledDlg.ui \
-    CGameDlg.ui
+    CGameDlg.ui \
+    CRankDlg.ui
 
 TRANSLATIONS += \
     Bejeweled_zh_CN.ts

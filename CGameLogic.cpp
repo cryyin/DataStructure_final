@@ -1,7 +1,8 @@
 #include "Global.h"
-#include "audioclip.h"
-#include <QtCore/QCoreApplication>
-#include <QtMultimedia/QMediaPlayer>
+
+
+
+
 
 CGameLogic::CGameLogic(){
 }
@@ -381,8 +382,8 @@ bool CGameLogic::checkBoard(){
  */
 
 void CGameLogic::clearBoard(){
-    QMediaPlayer * player = new QMediaPlayer;
 
+    QMediaPlayer * player = new QMediaPlayer;
 
     player->setMedia(QUrl::fromLocalFile("./res/audio/2.mp3"));
     player->setVolume(50);
@@ -467,6 +468,7 @@ void CGameLogic::constructBoard(){
     CGameLogic::checkBoard();
     CGameLogic::clearBoard();
 }
+
 
 
 /**

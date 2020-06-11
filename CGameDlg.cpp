@@ -1,8 +1,6 @@
 #include "CGameDlg.h"
 #include "ui_CGameDlg.h"
-#include "audioclip.h"
-#include <QtCore/QCoreApplication>
-#include <QtMultimedia/QMediaPlayer>
+
 
 CGameDlg::CGameDlg(QWidget *parent) :
     QDialog(parent),
@@ -144,8 +142,8 @@ void CGameDlg::mousePressEvent(QMouseEvent *event)
         QPoint temp_p1 = event->globalPos();
         QPoint temp_p2 = pos();
         QPoint p = temp_p1-temp_p2;
-        AudioClip ac;
-        QMediaPlayer * player = new QMediaPlayer;
+        //AudioClip ac;
+
 
         //播放音频
         player->setMedia(QUrl::fromLocalFile("./res/audio/1.mp3"));
@@ -226,4 +224,25 @@ void CGameDlg::on_pushButton_clicked()
     p1_remind = {temp_point[0][0],temp_point[0][1]};
     p2_remind = {temp_point[1][0],temp_point[1][1]};
     remind_count = 1;
+}
+
+void CGameDlg::on_pushButton_2_clicked()
+{
+    ofstream write;
+    ifstream read;
+    bool isOK;
+
+    QString temp= QInputDialog::getText(NULL, "Input Dialog",
+                                        "Please input your name",
+                                        QLineEdit::Normal,
+                                        "your name",
+                                        &isOK);
+    string name=temp.toStdString();
+    if(isOK){
+        write.open("result.txt", ios::app);				//用ios::app不会覆盖文件内容
+        write << name <<" "<<ui->textEdit_2->document()->toPlainText().toStdString()<<" "<<ui->lineEdit_6->text().toStdString()<< endl;
+        write.close();
+        read.close();
+    }
+
 }
