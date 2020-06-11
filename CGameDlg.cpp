@@ -218,8 +218,10 @@ void CGameDlg::mousePressEvent(QMouseEvent *event)
 
 
         //播放音频
+        if(1){
+            player->play();
+        }
 
-        player->play();
 
 
         //ac.load("D:/1.mp3");
@@ -326,4 +328,9 @@ void CGameDlg::on_pushButton_2_clicked()
         read.close();
     }
 
+}
+
+void CGameDlg::on_pushButton_3_clicked()
+{
+    settingForm->show();
 }

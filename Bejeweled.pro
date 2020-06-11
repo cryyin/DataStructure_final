@@ -21,6 +21,7 @@ SOURCES += \
     CGameDlg.cpp \
     CGameLogic.cpp \
     CGameSetting.cpp \
+    CHelpDlg.cpp \
     CRankDlg.cpp \
     CRoleAttr.cpp \
     audioclip.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     CBejeweledDlg.h \
     CGameDlg.h \
     CGameSetting.h \
+    CHelpDlg.h \
     CRankDlg.h \
     Global.h \
     audioclip.h
@@ -39,6 +41,7 @@ FORMS += \
     CBejeweledDlg.ui \
     CGameDlg.ui \
     CGameSetting.ui \
+    CHelpDlg.ui \
     CRankDlg.ui
 
 TRANSLATIONS += \

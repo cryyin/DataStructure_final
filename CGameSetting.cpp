@@ -15,5 +15,10 @@ CGameSetting::~CGameSetting()
 
 void CGameSetting::on_pushButton_clicked()
 {
+    //Setting::setting_Voice=true;
+}
 
+void CGameSetting::on_pushButton_2_clicked()
+{
+    //Setting::setting_Voice=false;
 }

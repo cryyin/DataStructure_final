@@ -5,6 +5,7 @@
 #include "qstandarditemmodel.h"
 #include <QtCore/QCoreApplication>
 #include "Global.h"
+#include "CGameSetting.h"
 
 namespace Ui {
 class CRankDlg;
@@ -17,6 +18,7 @@ class CRankDlg : public QDialog
 public:
     explicit CRankDlg(QWidget *parent = nullptr);
     ~CRankDlg();
+    CGameSetting * settingForm=new CGameSetting;
 
 private:
     Ui::CRankDlg *ui;

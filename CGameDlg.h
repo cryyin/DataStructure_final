@@ -7,6 +7,7 @@
 #include "audioclip.h"
 #include <QtCore/QCoreApplication>
 #include <QtMultimedia/QMediaPlayer>
+#include "CGameSetting.h"
 
 
 namespace Ui {
@@ -34,9 +35,12 @@ private slots:
     void on_pushButton_2_clicked();
 
 
+    void on_pushButton_3_clicked();
+
 protected:
 
      void closeEvent(QCloseEvent *event);
+     CGameSetting *settingForm=new CGameSetting;
 
 private:
     Ui::CGameDlg *ui;

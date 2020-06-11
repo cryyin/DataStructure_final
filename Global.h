@@ -21,6 +21,7 @@
 #include <sstream>
 #include <QCloseEvent>
 
+
 #define CHESS_COUNT 7 //棋子种类
 #define ICON_COUNT 2 //图标种类
 #define MAP_SIZE 12 //地图单行棋子数量
@@ -32,8 +33,6 @@
 #define BOSS1_STEPS 50//boss1限制步数
 
 using namespace std;
-
-
 
 
 /**

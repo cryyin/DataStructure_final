@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>start</string>
    </property>
   </widget>
   <widget class="QWidget" name="widget" native="true">
@@ -47,6 +47,19 @@
    </property>
    <property name="text">
     <string>high score</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>290</y>
+     <width>221</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>help</string>
    </property>
   </widget>
  </widget>

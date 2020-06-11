@@ -42,3 +42,10 @@ void CBejeweledDlg::on_pushButton_2_clicked()
 
 }
 
+
+void CBejeweledDlg::on_pushButton_3_clicked()
+{
+    this->hide();
+    help_form->exec();
+    this->show();
+}
