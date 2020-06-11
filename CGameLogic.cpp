@@ -33,6 +33,8 @@ void CGameLogic::initBoard(){
         }
     }
 
+    bossHealth=BOSS1_HEALTH;//初始化血量
+
 }
 
 /**
@@ -83,7 +85,7 @@ void CGameLogic::disturbBoard(int x,int y,int value){
                     value = rand() % (CHESS_COUNT-1);
                 }
             }else{
-                value = rand() % (CHESS_COUNT);
+                value = rand() % (CHESS_COUNT-1);
                 while(value==x1_num){
                     value = rand() % (CHESS_COUNT-1);
                 }
@@ -183,6 +185,7 @@ bool CGameLogic::checkMove(int x1,int y1,int x2,int y2){
 
     //对新棋盘进行消子检测，如果可以消除则可以交换，返回true
     if(temp.checkBoard()){
+        playerStep--;
         return true;
     }else{//交换后不可以消子，返回false
         return false;
@@ -400,12 +403,14 @@ void CGameLogic::clearBoard(){
                      break;
                     case 1:
                      role.attack++;
+                     bossHealth=bossHealth-1;
                      break;
                     case 2:
                      role.armour++;
                      break;
                     case 3:
                      role.magic++;
+                     bossHealth=bossHealth-1;
                      break;
                     case 4:
                      role.potion++;
@@ -458,7 +463,7 @@ void CGameLogic::constructBoard(){
     for(int i=0;i<MAP_SIZE;i++){
         for(int k=0;k<MAP_SIZE;k++){
             if(board[i][k] == 6){
-                int temp = rand() % (CHESS_COUNT-2);
+                int temp = rand() % (CHESS_COUNT-1);
                 board[i][k] = temp;
                 board_clear[i][k] = 0;
             }

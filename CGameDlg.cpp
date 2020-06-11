@@ -104,6 +104,7 @@ void CGameDlg::countFlash(){
 
                 //清除棋盘
                 if(logic.checkBoard()){
+
                     logic.clearBoard();
                 }
             }
@@ -124,6 +125,41 @@ void CGameDlg::countFlash(){
     ui->lineEdit_4->setText(QString::number(logic.role.magic, 10));
     ui->lineEdit_5->setText(QString::number(logic.role.potion, 10));
     ui->lineEdit_6->setText(QString::number(logic.role.gold, 10));
+
+    //boss血条更新，胜利判断
+    if(logic.bossHealth>0&&logic.playerStep>0){
+        ui->label_9->setGeometry(ui->label_9->geometry().x(),ui->label_9->geometry().y(),logic.bossHealth,ui->label_9->geometry().height());
+    }else if(logic.bossHealth<=0&&!logic.playerWin&&logic.playerStep>0){
+        logic.playerWin=true;
+        QMessageBox::information(NULL, "win", "你打败了boss1！", QMessageBox::Ok);
+        //记录得分
+        ofstream write;
+        ifstream read;
+        bool isOK;
+
+        QString temp= QInputDialog::getText(NULL, "Input Dialog",
+                                            "Please input your name",
+                                            QLineEdit::Normal,
+                                            "your name",
+                                            &isOK);
+        string name=temp.toStdString();
+        if(isOK){
+            write.open("result.txt", ios::app);				//用ios::app不会覆盖文件内容
+            write << name <<" "<<ui->textEdit_2->document()->toPlainText().toStdString()<<" "<<ui->lineEdit_6->text().toInt()+logic.playerStep*20<< endl;
+            write.close();
+            read.close();
+        }
+    }
+
+    //玩家步数更新
+    if(!logic.playerWin&&logic.playerStep>=0){
+        ui->lineEdit_7->setText(QString::number(logic.playerStep));
+    }
+    if(!logic.playerWin&&logic.playerStep<=0){
+        QMessageBox::information(NULL, "dead", "菜", QMessageBox::Ok);
+        logic.playerWin=true;//防止多次弹窗，反正没步数就不能点了，不会影响boss血量导致胜利
+    }
+
 }
 
 
@@ -137,7 +173,7 @@ void CGameDlg::countFlash(){
 void CGameDlg::mousePressEvent(QMouseEvent *event)
 {
     // 如果是鼠标左键按下
-    if(event->button() == Qt::LeftButton)
+    if(event->button() == Qt::LeftButton&&logic.playerStep>0)
     {
         QPoint temp_p1 = event->globalPos();
         QPoint temp_p2 = pos();

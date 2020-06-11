@@ -257,6 +257,35 @@
     <string>保存成绩</string>
    </property>
   </widget>
+  <widget class="QLineEdit" name="lineEdit_7">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>230</y>
+     <width>113</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>50</string>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>230</y>
+     <width>54</width>
+     <height>12</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>剩余步数：</string>
+   </property>
+  </widget>
   <zorder>label_7</zorder>
   <zorder>textEdit</zorder>
   <zorder>textEdit_2</zorder>
@@ -276,6 +305,8 @@
   <zorder>label_8</zorder>
   <zorder>pushButton</zorder>
   <zorder>pushButton_2</zorder>
+  <zorder>lineEdit_7</zorder>
+  <zorder>label_10</zorder>
  </widget>
  <resources/>
  <connections/>

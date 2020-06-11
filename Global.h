@@ -26,8 +26,12 @@
 #define WIN_SIZE 640    //棋盘大小
 #define MONSTER_COUNT 1 //怪物数量
 #define MONSTERMOVEMENT_COUNT 20 //怪物图片数量
+#define BOSS1_HEALTH 140 //boss1血量
+#define BOSS1_STEPS 75//boss1限制步数
 
 using namespace std;
+
+
 
 
 /**
@@ -69,6 +73,11 @@ public:
    bool checkBoardStuck();//检测是否死局
    void remindBoard();//更新可移动棋子的数组
    void choseRemind(int temp_point[2][2]);//从可移动数组中选出一对棋子位置，填入传递数组中
+   int bossHealth;//boss1血量
+   bool playerWin=false;//玩家胜负
+   int playerStep=BOSS1_STEPS;//剩余步数
+
+
 
 private:
    int board[MAP_SIZE][MAP_SIZE];//棋盘数组
