@@ -20,7 +20,8 @@ void CBejeweledDlg::on_pushButton_clicked()
     //隐藏主界面
     this->hide();
     //显示游戏界面
-    game_widget->show();
+    game_widget->exec();
+    this->show();
 }
 
 void CBejeweledDlg::paintEvent(QPaintEvent *event)
@@ -36,5 +37,8 @@ void CBejeweledDlg::on_pushButton_2_clicked()
 {
     this->hide();
     //显示游戏界面
-    rank_form->show();
+    rank_form->exec();
+    this->show();
+
 }
+

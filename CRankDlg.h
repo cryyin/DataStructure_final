@@ -1,31 +1,22 @@
 #ifndef CRANKDLG_H
 #define CRANKDLG_H
 
-#include <QMainWindow>
+#include <QDialog>
 #include "qstandarditemmodel.h"
+#include <QtCore/QCoreApplication>
 #include "Global.h"
-
 
 namespace Ui {
 class CRankDlg;
 }
 
-class CRankDlg : public QMainWindow
+class CRankDlg : public QDialog
 {
     Q_OBJECT
 
 public:
     explicit CRankDlg(QWidget *parent = nullptr);
     ~CRankDlg();
-
-private slots:
-    void on_tableView_entered(const QModelIndex &index);
-
-    void on_tableView_clicked(const QModelIndex &index);
-
-    void on_tableView_activated(const QModelIndex &index);
-
-    void on_pushButton_clicked();
 
 private:
     Ui::CRankDlg *ui;

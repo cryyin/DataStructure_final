@@ -5,6 +5,7 @@
 #include "CGameDlg.h"
 #include "qpainter.h"
 #include "CRankDlg.h"
+#include "Global.h"
 
 
 QT_BEGIN_NAMESPACE

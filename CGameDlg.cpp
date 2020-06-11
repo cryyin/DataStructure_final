@@ -26,6 +26,9 @@ void CGameDlg::init(){
     tool.readFile();
     //打乱和初始化棋盘数组
     logic.initBoard();
+    //设置音效
+    player->setMedia(QUrl::fromLocalFile("./res/audio/1.mp3"));
+    player->setVolume(50);
 
     for(int i=0;i<MAP_SIZE;i++){
         for(int k=0;k<MAP_SIZE;k++){
@@ -90,7 +93,37 @@ void CGameDlg::countFlash(){
 
     if(!logic.isDowning){
         logic.downBoard();
+        //如果选取了两个点
+        if(select_count==2){
+            //两个点是否相邻。如果相邻则进行转换判断
+            if(logic.checkAdjacent(p1.x(),p1.y(),p2.x(),p2.y())){
+                if(logic.checkMove(p1.x(),p1.y(),p2.x(),p2.y())){
+
+                    //交换点位
+                    int temp_point = logic.getBoard(p1.x(),p1.y());
+                    logic.setBoard(p1.x(),p1.y(),logic.getBoard(p2.x(),p2.y()));
+                    logic.setBoard(p2.x(),p2.y(),temp_point);
+
+                    logic.playerStep--;
+                    select_count=0;
+
+                    //清除棋盘
+                    if(logic.checkBoard()){
+
+                        logic.clearBoard();
+                    }
+                }
+                if(count_flash%4 == 0){
+                    select_count=0;
+                }
+            }else{
+                if(count_flash%4 == 0){
+                    select_count=0;
+                }
+            }
+        }
     }
+    /*
     //如果选取了两个点
     if(select_count==2){
         //两个点是否相邻。如果相邻则进行转换判断
@@ -101,6 +134,8 @@ void CGameDlg::countFlash(){
                 int temp_point = logic.getBoard(p1.x(),p1.y());
                 logic.setBoard(p1.x(),p1.y(),logic.getBoard(p2.x(),p2.y()));
                 logic.setBoard(p2.x(),p2.y(),temp_point);
+
+                logic.playerStep--;
 
                 //清除棋盘
                 if(logic.checkBoard()){
@@ -117,6 +152,7 @@ void CGameDlg::countFlash(){
             }
         }
     }
+    */
 
     //设置各项数值
     ui->lineEdit->setText(QString::number(logic.role.health, 10));
@@ -182,8 +218,7 @@ void CGameDlg::mousePressEvent(QMouseEvent *event)
 
 
         //播放音频
-        player->setMedia(QUrl::fromLocalFile("./res/audio/1.mp3"));
-        player->setVolume(50);
+
         player->play();
 
 
@@ -250,6 +285,16 @@ void CGameDlg::paintEvent(QPaintEvent *event)
     painter.drawPixmap(QRect(600,100,100,100), tool.monster[0][count_flash%20]);
 }
 
+/**
+ * @brief CGameDlg::closeEvent
+ * @param event
+ *
+ * 重写窗体关闭
+ */
+void CGameDlg::closeEvent(QCloseEvent *event){
+    //CBejeweledDlg::showForm();
+
+}
 
 
 void CGameDlg::on_pushButton_clicked()

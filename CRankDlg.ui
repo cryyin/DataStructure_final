@@ -1,47 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>CRankDlg</class>
- <widget class="QMainWindow" name="CRankDlg">
+ <widget class="QDialog" name="CRankDlg">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>700</width>
-    <height>594</height>
+    <width>755</width>
+    <height>486</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
-   <widget class="QTableView" name="tableView">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>10</y>
-      <width>511</width>
-      <height>391</height>
-     </rect>
-    </property>
-    <property name="sortingEnabled">
-     <bool>false</bool>
-    </property>
-    <attribute name="verticalHeaderShowSortIndicator" stdset="0">
-     <bool>false</bool>
-    </attribute>
-   </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
+  <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>700</width>
-     <height>26</height>
+     <x>20</x>
+     <y>10</y>
+     <width>721</width>
+     <height>461</height>
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

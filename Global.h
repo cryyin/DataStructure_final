@@ -12,12 +12,14 @@
 #include "audioclip.h"
 #include <QtCore/QCoreApplication>
 #include <QtMultimedia/QMediaPlayer>
-#include<iostream>
+#include <iostream>
+#include <string>
 #include<fstream>
 #include <QInputDialog>
 #include <QDate>
 #include <QMessageBox>
 #include <sstream>
+#include <QCloseEvent>
 
 #define CHESS_COUNT 7 //棋子种类
 #define ICON_COUNT 2 //图标种类
@@ -27,7 +29,7 @@
 #define MONSTER_COUNT 1 //怪物数量
 #define MONSTERMOVEMENT_COUNT 20 //怪物图片数量
 #define BOSS1_HEALTH 140 //boss1血量
-#define BOSS1_STEPS 75//boss1限制步数
+#define BOSS1_STEPS 50//boss1限制步数
 
 using namespace std;
 
@@ -76,7 +78,7 @@ public:
    int bossHealth;//boss1血量
    bool playerWin=false;//玩家胜负
    int playerStep=BOSS1_STEPS;//剩余步数
-
+   QMediaPlayer * player = new QMediaPlayer;//消除音效
 
 
 private:

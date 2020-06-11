@@ -34,6 +34,9 @@ void CGameLogic::initBoard(){
     }
 
     bossHealth=BOSS1_HEALTH;//初始化血量
+    //初始化播放器
+    player->setMedia(QUrl::fromLocalFile("./res/audio/2.mp3"));
+    player->setVolume(50);
 
 }
 
@@ -185,7 +188,6 @@ bool CGameLogic::checkMove(int x1,int y1,int x2,int y2){
 
     //对新棋盘进行消子检测，如果可以消除则可以交换，返回true
     if(temp.checkBoard()){
-        playerStep--;
         return true;
     }else{//交换后不可以消子，返回false
         return false;
@@ -386,10 +388,9 @@ bool CGameLogic::checkBoard(){
 
 void CGameLogic::clearBoard(){
 
-    QMediaPlayer * player = new QMediaPlayer;
 
-    player->setMedia(QUrl::fromLocalFile("./res/audio/2.mp3"));
-    player->setVolume(50);
+
+
 
     for(int i=0;i<MAP_SIZE;i++){
         for(int k=0;k<MAP_SIZE;k++){
