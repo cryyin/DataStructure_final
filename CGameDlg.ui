@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Mirrorcraft</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>res/icon/chess_0.png</normaloff>res/icon/chess_0.png</iconset>
   </property>
   <widget class="QTextEdit" name="textEdit">
    <property name="geometry">
