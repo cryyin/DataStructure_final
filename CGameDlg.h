@@ -21,7 +21,12 @@ class CGameDlg : public QDialog
 public:
     explicit CGameDlg(QWidget *parent = nullptr);
     QMediaPlayer * player = new QMediaPlayer;//音乐播放器
+    QMediaPlayer * bgmPlayer = new QMediaPlayer;//音乐播放器
     ~CGameDlg();
+
+public slots:
+    void voiceOn();
+    void voiceOff();
 
 private slots:
     void init();//初始化棋盘、游戏时间计时器、重绘计时器
@@ -37,9 +42,13 @@ private slots:
 
     void on_pushButton_3_clicked();
 
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_5_clicked();
+
 protected:
 
-     void closeEvent(QCloseEvent *event);
+     //void closeEvent(QCloseEvent *event);
      CGameSetting *settingForm=new CGameSetting;
 
 private:
@@ -58,6 +67,7 @@ private:
     QPoint p2 = {0,0};
 
     int remind_count=0;//提示框架
+    bool remind_click=false;
     QPoint p1_remind = {0,0};
     QPoint p2_remind = {0,0};
 };

@@ -23,6 +23,12 @@ private slots:
 
 private:
     Ui::CGameSetting *ui;
+
+signals:
+    void voiceOn();
+    void voiceOff();
+
+
 };
 
 #endif // CGAMESETTING_H

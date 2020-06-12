@@ -17,6 +17,7 @@ CBejeweledDlg::~CBejeweledDlg()
 
 void CBejeweledDlg::on_pushButton_clicked()
 {
+    CGameDlg *game_widget = new CGameDlg;//游戏界面
     //隐藏主界面
     this->hide();
     //显示游戏界面

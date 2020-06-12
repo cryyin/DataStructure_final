@@ -95,6 +95,7 @@ class CAppTool{
 public:
    CAppTool();
    void readFile();//读取图片
+   QString filePath="./res";
    QPixmap pictures[CHESS_COUNT];//棋子值存储
    QPixmap icon[ICON_COUNT];//图标值存储
    QPixmap monster[MONSTER_COUNT][MONSTERMOVEMENT_COUNT];//怪物值存储

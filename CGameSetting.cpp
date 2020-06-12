@@ -15,10 +15,10 @@ CGameSetting::~CGameSetting()
 
 void CGameSetting::on_pushButton_clicked()
 {
-    //Setting::setting_Voice=true;
+    emit voiceOn();
 }
 
 void CGameSetting::on_pushButton_2_clicked()
 {
-    //Setting::setting_Voice=false;
+    emit voiceOff();
 }

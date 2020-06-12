@@ -532,6 +532,7 @@ void CGameLogic::remindBoard(){
     if(checkBoardStuck()){
         for(int i=0;i<MAP_SIZE;i++){
             for(int k=0;k<MAP_SIZE;k++){
+
                 if((i-1)!=-1){
                     if(checkMove(i,k,i-1,k)){
                         moveable_point[i][k] = 1;
@@ -556,16 +557,9 @@ void CGameLogic::remindBoard(){
                         moveable_point[i][k+1] = 1;
                     }
                 }
+
             }
         }
-    }
-
-
-    for(int i=0;i<MAP_SIZE;i++){
-        for(int k=0;k<MAP_SIZE;k++){
-            cout<<moveable_point[i][k]<<" ";
-        }
-        cout<<"\n";
     }
 }
 

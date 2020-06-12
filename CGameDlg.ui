@@ -18,7 +18,7 @@
     <rect>
      <x>880</x>
      <y>30</y>
-     <width>241</width>
+     <width>221</width>
      <height>31</height>
     </rect>
    </property>
@@ -27,8 +27,8 @@
    <property name="geometry">
     <rect>
      <x>880</x>
-     <y>70</y>
-     <width>241</width>
+     <y>100</y>
+     <width>221</width>
      <height>31</height>
     </rect>
    </property>
@@ -234,9 +234,9 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>970</x>
-     <y>297</y>
-     <width>131</width>
+     <x>880</x>
+     <y>280</y>
+     <width>221</width>
      <height>41</height>
     </rect>
    </property>
@@ -247,9 +247,9 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>970</x>
-     <y>350</y>
-     <width>131</width>
+     <x>880</x>
+     <y>340</y>
+     <width>221</width>
      <height>41</height>
     </rect>
    </property>
@@ -289,14 +289,27 @@
   <widget class="QPushButton" name="pushButton_3">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>10</y>
-     <width>71</width>
-     <height>51</height>
+     <x>880</x>
+     <y>160</y>
+     <width>221</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>设置</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>220</y>
+     <width>221</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>更换主题</string>
    </property>
   </widget>
   <zorder>label_7</zorder>
@@ -321,6 +334,7 @@
   <zorder>lineEdit_7</zorder>
   <zorder>label_10</zorder>
   <zorder>pushButton_3</zorder>
+  <zorder>pushButton_4</zorder>
  </widget>
  <resources/>
  <connections/>

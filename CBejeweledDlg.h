@@ -30,7 +30,6 @@ private slots:
 
 private:
     Ui::CBejeweledDlg *ui;
-    CGameDlg *game_widget = new CGameDlg;//游戏界面
     CRankDlg *rank_form=new CRankDlg;
     CHelpDlg *help_form=new CHelpDlg;
 };

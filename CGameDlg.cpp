@@ -1,5 +1,8 @@
 #include "CGameDlg.h"
 #include "ui_CGameDlg.h"
+#include <QFile>
+#include <QFileInfo>
+#include<QFileDialog>
 
 
 CGameDlg::CGameDlg(QWidget *parent) :
@@ -9,6 +12,9 @@ CGameDlg::CGameDlg(QWidget *parent) :
     ui->setupUi(this);
     //初始化
     init();
+    connect(settingForm,SIGNAL(voiceOn()),this,SLOT(voiceOn()));
+    connect(settingForm,SIGNAL(voiceOff()),this,SLOT(voiceOff()));
+
 }
 
 CGameDlg::~CGameDlg()
@@ -29,6 +35,7 @@ void CGameDlg::init(){
     //设置音效
     player->setMedia(QUrl::fromLocalFile("./res/audio/1.mp3"));
     player->setVolume(50);
+
 
     for(int i=0;i<MAP_SIZE;i++){
         for(int k=0;k<MAP_SIZE;k++){
@@ -77,9 +84,9 @@ void CGameDlg::init(){
 
 void CGameDlg::countTime(){
     count_time++;
-    if(remind_count == 1){
-        remind_count = 0;
-    }
+    //if(remind_count == 1){
+        //remind_count = 0;
+    //}
     ui->textEdit_2->setText(QString::number(count_time,10));
 }
 
@@ -209,6 +216,7 @@ void CGameDlg::countFlash(){
 void CGameDlg::mousePressEvent(QMouseEvent *event)
 {
     // 如果是鼠标左键按下
+    remind_count = 0;
     if(event->button() == Qt::LeftButton&&logic.playerStep>0)
     {
         QPoint temp_p1 = event->globalPos();
@@ -288,16 +296,21 @@ void CGameDlg::paintEvent(QPaintEvent *event)
 }
 
 /**
- * @brief CGameDlg::closeEvent
- * @param event
- *
- * 重写窗体关闭
+ * @brief CGameDlg::voiceOn
+ * 接受setting信号的槽
  */
-void CGameDlg::closeEvent(QCloseEvent *event){
-    //CBejeweledDlg::showForm();
-
+void CGameDlg::voiceOn(){
+    player->setVolume(50);
+    logic.player->setVolume(50);
 }
-
+/**
+ * @brief CGameDlg::voiceOff
+ * 接受setting信号的槽
+ */
+void CGameDlg::voiceOff(){
+    player->setVolume(0);
+    logic.player->setVolume(0);
+}
 
 void CGameDlg::on_pushButton_clicked()
 {
@@ -332,5 +345,12 @@ void CGameDlg::on_pushButton_2_clicked()
 
 void CGameDlg::on_pushButton_3_clicked()
 {
-    settingForm->show();
+    settingForm->exec();
+}
+
+void CGameDlg::on_pushButton_4_clicked()
+{
+    QString newPath = QFileDialog::getExistingDirectory(this,"选择目录","./",QFileDialog::ShowDirsOnly);
+    tool.filePath=newPath;
+    tool.readFile();
 }
